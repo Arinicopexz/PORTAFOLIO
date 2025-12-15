@@ -1,0 +1,60 @@
+{
+  "experiencia": {
+    "nombre": "Ariel Nicolás Rosero Toscano",
+    "titulo": "Desarrollador Jr Backend y Front End",
+    "resumen": "Estudiante de Desarrollo de Software en la PUCE[cite: 15, 19]. Soy una persona motivada, con capacidad de aprendizaje rápido y aptitudes para trabajar en equipo[cite: 20]. Busco una oportunidad para iniciar en el mundo profesional.",
+    "habilidades": [
+      "Python",
+      "SQL (PostgreSQL, SQL Server)",
+      "JavaScript",
+      "Node.js & React",
+      "Django",
+      "HTML5",
+      "Git & GitHub"
+    ],
+    "historial": [
+      {
+        "id": 1,
+        "rol": "Auxiliar practicante en comunicaciones",
+        "empresa": "ALPHA HOUSE",
+        "periodo": "Experiencia Previa",
+        "descripcion": "Apoyo en tareas de comunicación y gestión interna."
+      },
+      {
+        "id": 2,
+        "rol": "Desarrollador Freelance",
+        "empresa": "Proyectos Personales",
+        "periodo": "Portafolio",
+        "descripcion": "Desarrollo de sitios web personales, tiendas online y creación de la página web 'Relax Total'."
+      }
+    ],
+    "estudios": [
+      {
+        "id": 1,
+        "titulo": "Licenciatura en Desarrollo de Software",
+        "institucion": "Pontificia Universidad Católica del Ecuador",
+        "fecha": "En curso"
+      },
+      {
+        "id": 2,
+        "titulo": "Bachillerato Internacional",
+        "institucion": "Unidad Educativa Bilingüe William Caxton College",
+        "fecha": "Graduado"
+      }
+    ]
+  },
+  "posts": [
+    {
+      "id": "1",
+      "title": "Cómo construir una lista de tareas con React y JSON Server",
+      "date": "2025-04-10",
+      "content": "<h3>Introducción</h3><p>Crear una aplicación CRUD es fundamental. Usaremos <strong>Axios</strong> para conectar nuestro frontend con la API.</p><h4>Pasos clave</h4><p>1. Configurar JSON Server.<br>2. Crear hooks personalizados.<br>3. Gestionar el estado con React.</p>"
+    },
+    {
+      "id": "2",
+      "title": "Análisis de la propuesta 'Temporal' en TC39",
+      "date": "2025-04-12",
+      "content": "<h3>Adiós al objeto Date</h3><p>La propuesta <strong>Temporal</strong> busca arreglar los problemas de fechas en JS. Permite manejar fechas sin zonas horarias de forma segura y realizar cálculos precisos sin librerías externas.</p>"
+    }
+  ]
+}
