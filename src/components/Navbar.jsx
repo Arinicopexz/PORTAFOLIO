@@ -1,7 +1,11 @@
+// Importamos Link para navegación entre rutas
 import { Link } from 'react-router-dom';
+// Importamos el hook personalizado para manejar el tema (modo oscuro/claro)
 import { useTheme } from '../context/ThemeContext';
 
+// Componente de navegación principal
 export default function Navbar() {
+  // Obtenemos el tema actual y la función para cambiarlo desde el contexto
   const { theme, toggleTheme } = useTheme();
 
   return (

@@ -1,13 +1,19 @@
+// Importamos hooks de React para manejar estado y efectos secundarios
 import { useEffect, useState } from 'react';
+// Importamos el cliente Axios configurado para hacer peticiones
 import client from '../api/client';
 
+// Componente principal para la página de inicio (CV)
 export default function Home() {
+  // Estado para almacenar los datos del CV
   const [cv, setCv] = useState(null);
   
   // Hook de efecto: Se ejecuta al cargar la página para pedir los datos
   useEffect(() => {
+    // Realizamos una petición GET al endpoint '/experiencia' para obtener los datos del CV
     client.get('/experiencia')
       .then(res => {
+        // Guardamos los datos en el estado
         setCv(res.data);
       })
       .catch(err => console.error("Error cargando CV:", err));

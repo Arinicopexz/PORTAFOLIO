@@ -1,8 +1,10 @@
+// Importamos funciones de React para crear contexto y manejar estado
 import { createContext, useContext, useEffect, useState } from 'react';
 
 // 1. Creamos el contexto (la "caja" que guardará el dato)
 const ThemeContext = createContext();
 
+// Proveedor del contexto de tema que envuelve la aplicación
 export const ThemeProvider = ({ children }) => {
   // 2. Estado inicial: Buscamos en localStorage si ya había elegido un tema
   const [theme, setTheme] = useState(() => {

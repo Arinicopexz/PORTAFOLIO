@@ -1,13 +1,19 @@
+// Importamos hooks de React para manejar estado y efectos secundarios
 import { useEffect, useState } from 'react';
+// Importamos useParams para obtener parámetros de la URL y Link para navegación
 import { useParams, Link } from 'react-router-dom';
+// Importamos el cliente Axios configurado para hacer peticiones
 import client from '../api/client';
 
+// Componente para mostrar el detalle de un post específico
 export default function PostDetail() {
+  // Obtenemos el ID del post desde los parámetros de la URL
   const { id } = useParams(); // Obtenemos el ID de la URL
+  // Estado para almacenar los datos del post
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    // Pedimos solo el post específico
+    // Pedimos solo el post específico usando el ID de la URL
     client.get(`/posts/${id}`)
       .then(res => setPost(res.data))
       .catch(err => console.error(err));
