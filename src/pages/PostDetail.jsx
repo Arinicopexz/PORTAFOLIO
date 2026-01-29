@@ -1,43 +1,48 @@
-// Importamos hooks de React para manejar estado y efectos secundarios
 import { useEffect, useState } from 'react';
-// Importamos useParams para obtener parámetros de la URL y Link para navegación
-import { useParams, Link } from 'react-router-dom';
-// Importamos el cliente Axios configurado para hacer peticiones
+import { useParams, Link, useNavigate } from 'react-router-dom'; // Agregamos useNavigate
 import client from '../api/client';
 
-// Componente para mostrar el detalle de un post específico
 export default function PostDetail() {
-  // Obtenemos el ID del post desde los parámetros de la URL
-  const { id } = useParams(); // Obtenemos el ID de la URL
-  // Estado para almacenar los datos del post
+  const { id } = useParams();
   const [post, setPost] = useState(null);
+  const navigate = useNavigate(); // Hook para redireccionar
 
   useEffect(() => {
-    // Pedimos solo el post específico usando el ID de la URL
     client.get(`/posts/${id}`)
       .then(res => setPost(res.data))
-      .catch(err => console.error(err));
-  }, [id]);
+      .catch(err => {
+        console.error(err);
+        // Si el post no existe, avisamos y regresamos al blog
+        alert("El artículo que buscas no existe.");
+        navigate('/posts');
+      });
+  }, [id, navigate]);
 
-  if (!post) return <div className="text-center mt-20">Cargando artículo...</div>;
+  if (!post) return (
+    <div className="flex justify-center items-center h-64 text-gray-500 dark:text-gray-400">
+      <p className="animate-pulse">Cargando artículo...</p>
+    </div>
+  );
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <Link to="/posts" className="text-blue-500 hover:underline mb-6 inline-block font-medium">
+    <div className="max-w-3xl mx-auto p-6 animate-fade-in">
+      <Link to="/posts" className="text-blue-600 dark:text-blue-400 hover:underline mb-6 inline-flex items-center font-medium transition-colors">
         ← Volver al blog
       </Link>
       
-      <article className="prose dark:prose-invert lg:prose-xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900 dark:text-white">
-          {post.title}
-        </h1>
-        <p className="text-gray-500 dark:text-gray-400 mb-8 border-b pb-4 dark:border-gray-700">
-          Publicado el {post.date}
-        </p>
+      <article className="mx-auto">
+        <header className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
+            {post.title}
+          </h1>
+          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-6">
+            <span>📅 {post.date}</span>
+          </div>
+        </header>
         
-        {/* Contenedor del contenido HTML */}
+        {/* Contenedor del contenido HTML con estilo de tarjeta */}
         <div 
-          className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm leading-relaxed text-gray-800 dark:text-gray-200"
+          className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 leading-relaxed text-gray-800 dark:text-gray-200 prose-headings:font-bold prose-h3:text-xl prose-h3:mt-4 prose-h3:mb-2 prose-p:mb-4"
           dangerouslySetInnerHTML={{ __html: post.content }} 
         />
       </article>

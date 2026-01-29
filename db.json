@@ -12,6 +12,14 @@
       "HTML5",
       "Git & GitHub"
     ],
+    "contacto": [
+      {
+        "email": "anrosero@puce.edu.ec",
+        "linkedin": "linkedin.com/in/arielnicolas",
+        "github": "github.com/Arinicopexz",
+        "ubicacion": "Quito, Ecuador"
+      }
+    ],
     "historial": [
       {
         "id": 1,
@@ -55,6 +63,25 @@
       "title": "Análisis de la propuesta 'Temporal' en TC39",
       "date": "2025-04-12",
       "content": "<h3>Adiós al objeto Date</h3><p>La propuesta <strong>Temporal</strong> busca arreglar los problemas de fechas en JS. Permite manejar fechas sin zonas horarias de forma segura y realizar cálculos precisos sin librerías externas.</p>"
+    },
+    {
+      "id": "3",
+      "title": "Git Flow: Mejores prácticas para trabajo en equipo",
+      "date": "2025-05-02",
+      "content": "<h3>Organizando el caos</h3><p>Cuando trabajamos en equipo, no podemos hacer commit directo a main. <strong>Git Flow</strong> establece un estándar: ramas <em>Feature</em> para nuevas características, <em>Develop</em> para integración y <em>Main</em> solo para producción estable.</p>"
+    },
+    {
+      "id": "4",
+      "title": "Primeros pasos con Django REST Framework",
+      "date": "2025-05-20",
+      "content": "<h3>Potencia tu Backend con Python</h3><p>Si ya conoces Python, <strong>DRF</strong> es la herramienta definitiva para crear APIs. Sus <em>Serializers</em> permiten transformar modelos de base de datos complejos en objetos JSON nativos de manera casi automática.</p>"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "$2b$10$1lCiH5EwNJh7qzzU2zObZOkzDoQ9a6Jkqg8zKCkLmszzzuhyu.4uW"
     }
   ]
 }

@@ -1,34 +1,39 @@
-// Importamos hooks de React para manejar estado y efectos secundarios
 import { useEffect, useState } from 'react';
-// Importamos el cliente Axios configurado para hacer peticiones
 import client from '../api/client';
 
-// Componente principal para la página de inicio (CV)
 export default function Home() {
-  // Estado para almacenar los datos del CV
   const [cv, setCv] = useState(null);
-  
-  // Hook de efecto: Se ejecuta al cargar la página para pedir los datos
+
   useEffect(() => {
-    // Realizamos una petición GET al endpoint '/experiencia' para obtener los datos del CV
     client.get('/experiencia')
       .then(res => {
-        // Guardamos los datos en el estado
         setCv(res.data);
       })
       .catch(err => console.error("Error cargando CV:", err));
   }, []);
 
-  // Si los datos no han llegado, mostramos un mensaje de carga
   if (!cv) return <div className="text-center mt-20 text-xl">Cargando perfil...</div>;
 
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-8 animate-fade-in">
-      {/* Encabezado */}
+      
+      {/* Encabezado con Datos Básicos */}
       <header className="text-center space-y-4">
         <h1 className="text-5xl font-bold text-gray-800 dark:text-white">{cv.nombre}</h1>
         <h2 className="text-2xl text-blue-600 dark:text-blue-400 font-medium">{cv.titulo}</h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">{cv.resumen}</p>
+        
+        {/* --- NUEVO: SECCIÓN DE CONTACTO RÁPIDO (Aquí lo agregué) --- */}
+        <div className="flex flex-wrap justify-center gap-4 mt-4 text-sm text-gray-600 dark:text-gray-400">
+           {cv.contacto && cv.contacto.map((c, index) => (
+             <div key={index} className="flex gap-4">
+                <span>📍 {c.ubicacion}</span>
+                <a href={`mailto:${c.email}`} className="hover:text-blue-500 underline">✉️ {c.email}</a>
+                <a href={`https://${c.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 underline">🔗 LinkedIn</a>
+                <a href={`https://${c.github}`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 underline">🐙 GitHub</a>
+             </div>
+           ))}
+        </div>
       </header>
 
       {/* Habilidades */}
